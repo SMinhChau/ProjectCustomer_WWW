@@ -1,0 +1,94 @@
+package com.client.control;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.client.entity.LoaiSanPham;
+import com.client.entity.SanPham;
+import com.client.service.LoaiSanPhamService;
+import com.client.service.SanPhamService;
+
+@Controller
+public class SanPhamController {
+	
+	@Autowired
+	private LoaiSanPhamService loaiSanPhamService;
+	
+	@Autowired
+	private SanPhamService sanPhamService;
+	
+	
+	@GetMapping("/")
+	public String load(Model model) {
+		List<SanPham> sanPhams = sanPhamService.getAll();
+		
+		model.addAttribute("sanPhams", sanPhams);
+		
+		return "list";
+	}
+	
+	@GetMapping("/showFormAdd")
+	public String loadForm(Model model) {
+		List<LoaiSanPham> loaiSanPhams = loaiSanPhamService.getAll();
+		SanPham sanPham = new SanPham();
+		
+		model.addAttribute("loaiSPs", loaiSanPhams);
+		model.addAttribute("sanPham", sanPham);
+		
+		return "form";
+		
+	}
+	
+	@PostMapping("/saveProduct")
+	public String save(@Valid @ModelAttribute("sanPham") SanPham sanPham, Errors errors, Model model) {
+		SanPham _sanPham = sanPham;
+		System.out.println(sanPham);
+		List<LoaiSanPham> loaiSanPhams = loaiSanPhamService.getAll();
+		if(_sanPham.getId_lsp() == 0) {
+			model.addAttribute("sanPham", _sanPham);
+			model.addAttribute("loaiSPs", loaiSanPhams);
+			model.addAttribute("status", "erorr");
+			return "form";
+		}
+		
+		if(_sanPham.getPrice() == 0) {
+			model.addAttribute("sanPham", _sanPham);
+			model.addAttribute("loaiSPs", loaiSanPhams);
+			model.addAttribute("price", "erorr");
+			return "form";
+		}
+		
+		if(errors.hasErrors()) {
+			model.addAttribute("sanPham", _sanPham);
+			model.addAttribute("loaiSPs", loaiSanPhams);
+			return "form";
+		}
+		sanPhamService.add(_sanPham);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/loadUpdate")
+	public String update(@RequestParam("productId") int id, Model model) {
+		SanPham sanPham = sanPhamService.findById(id);
+		List<LoaiSanPham> loaiSanPhams = loaiSanPhamService.getAll();
+		model.addAttribute("sanPham", sanPham);
+		model.addAttribute("loaiSPs", loaiSanPhams);
+		return "form";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("productId") int id) {
+		sanPhamService.delete(id);
+		return "redirect:/";
+	}
+}

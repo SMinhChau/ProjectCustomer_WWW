@@ -1,0 +1,21 @@
+package com.server.dao;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.server.entity.LoaiSanPham;
+
+public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO{
+
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Override
+	public List<LoaiSanPham> getAll() {
+		
+		return null;
+	}
+
+}

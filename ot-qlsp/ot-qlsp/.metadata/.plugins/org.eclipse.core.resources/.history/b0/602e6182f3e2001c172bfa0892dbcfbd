@@ -1,0 +1,20 @@
+package com.client.service;
+
+import java.util.List;
+
+import org.springframework.web.client.RestTemplate;
+
+import com.client.entity.LoaiSanPham;
+
+public class LoaiSanPhamServiceImpl implements LoaiSanPhamService{
+
+	private RestTemplate restTemplate;
+	private String url;
+	
+	@Override
+	public List<LoaiSanPham> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

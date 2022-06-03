@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+D:\HOC TAP\HK2 (2021-2022)\WWWW\ONTHCK\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3061919569.index
+\rest-demo-client\src\main\java
+D:\HOC TAP\HK2 (2021-2022)\WWWW\ONTHCK\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1925673270.index
+\spring-mvc-qlsp-client\src\main\java

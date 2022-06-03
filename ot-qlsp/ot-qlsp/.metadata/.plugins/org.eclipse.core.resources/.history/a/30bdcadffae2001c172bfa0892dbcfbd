@@ -1,0 +1,62 @@
+package com.client.control;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.client.entity.LoaiSanPham;
+import com.client.entity.SanPham;
+import com.client.service.LoaiSanPhamService;
+import com.client.service.SanPhamService;
+
+@Controller
+public class SanPhamController {
+	
+	@Autowired
+	private LoaiSanPhamService loaiSanPhamService;
+	
+	@Autowired
+	private SanPhamService sanPhamService;
+	
+	
+	@GetMapping("/")
+	public String load(Model model) {
+		List<SanPham> sanPhams = sanPhamService.getAll();
+		
+		model.addAttribute("sanPhams", sanPhams);
+		
+		return "list";
+	}
+	
+	@GetMapping("/showFormAdd")
+	public String loadForm(Model model) {
+		List<LoaiSanPham> loaiSanPhams = loaiSanPhamService.getAll();
+		SanPham sanPham = new SanPham();
+		
+		model.addAttribute("loaiSPs", loaiSanPhams);
+		model.addAttribute("sanPham", sanPham);
+		
+		return "form";
+		
+	}
+	
+	@PostMapping("/saveProduct")
+	public String save(@ModelAttribute("sanPham") SanPham sanPham, Model model) {
+		SanPham _sanPham = sanPham;
+		List<LoaiSanPham> loaiSanPhams = loaiSanPhamService.getAll();
+		if(_sanPham.getId_lsp() == 0) {
+			System.out.println(_sanPham.getId_lsp());
+			model.addAttribute("sanPham", _sanPham);
+			model.addAttribute("loaiSPs", loaiSanPhams);
+			model.addAttribute("status", "erorr");
+			return "form";
+		}
+		
+		return "redirect:/";
+	}
+}

@@ -1,0 +1,51 @@
+package com.client.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import com.client.entity.LoaiSanPham;
+import com.client.entity.SanPham;
+
+public class SanPhamServiceImpl implements SanPhamService{
+
+	private RestTemplate restTemplate;
+	private String url;
+
+	@Autowired
+	public SanPhamServiceImpl(RestTemplate template) {
+		restTemplate = template;
+		url = "http://localhost:8080/spring-mvc-qlsp-server/api/sanPhams";
+	}
+	
+	@Override
+	public List<SanPham> getAll() {
+		ResponseEntity<List<SanPham>> resp = restTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<SanPham>>() {
+				});
+		return resp.getBody();
+	}
+
+	@Override
+	public SanPham findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(SanPham sanPham) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

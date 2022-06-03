@@ -1,0 +1,16 @@
+package com.client.control;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.client.service.LoaiSanPhamService;
+import com.client.service.SanPhamService;
+
+public class SanPhamController {
+	
+	@Autowired
+	private LoaiSanPhamService loaiSanPhamService;
+	
+	@Autowired
+	private SanPhamService sanPhamService;
+	
+}

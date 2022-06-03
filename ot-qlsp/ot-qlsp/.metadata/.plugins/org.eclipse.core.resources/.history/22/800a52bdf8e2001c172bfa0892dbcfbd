@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<form:form action="saveProduct" modelAttribute="sanPham">
+			<form:hidden path="id" />
+			<tr>
+				<td>Ten san pham:</td>
+				<td><form:input path="name" value="${sanPham.name }"></form:input></td>
+			</tr>
+
+			<tr>
+				<td>Gia:</td>
+				<td><form:input path="price" value="${sanPham.price }"></form:input></td>
+			</tr>
+
+			<tr>
+				<td>Loai san pham:</td>
+				<td><form:select path="id_lsp">
+						<form:option value="0">Chon loai san pham</form:option>
+						<c:forEach var="lsp" items="${loaiSPs}">
+							<form:option value="${lsp.id }">${lsp.name }</form:option>
+						</c:forEach>
+					</form:select></td>
+			</tr>
+		</form:form>
+	</table>
+</body>
+</html>

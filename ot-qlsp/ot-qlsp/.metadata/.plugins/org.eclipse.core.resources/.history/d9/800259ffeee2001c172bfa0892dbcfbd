@@ -1,0 +1,45 @@
+package com.server.dao;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.server.entity.SanPham;
+
+public class SanPhamDAOImpl implements SanPhamDAO{
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Override
+	@Transactional
+	public List<SanPham> getAll() {
+		Session session = sessionFactory.getCurrentSession();
+		Query<SanPham> query = session.createQuery("from SanPham", SanPham.class);
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public SanPham findById(SanPham sanPham) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(SanPham sanPham) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

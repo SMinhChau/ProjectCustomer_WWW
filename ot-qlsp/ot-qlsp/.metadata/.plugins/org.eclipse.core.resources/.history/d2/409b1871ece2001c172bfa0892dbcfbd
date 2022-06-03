@@ -1,0 +1,27 @@
+package com.server.config;
+
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+@EnableTransactionManagement
+@ComponentScan(basePackages = "com.server")
+@PropertySource({"classpath:persistence-mssql.properties"})
+public class AppConfig implements WebMvcConfigurer{
+	@Autowired
+	private Environment env;
+	private Logger logger = Logger.getLogger(getClass().getName());
+	
+	@Bean
+	
+}

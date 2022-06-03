@@ -1,0 +1,71 @@
+package com.client.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SanPham")
+public class SanPham {
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name = "tenSP")
+	private String name;
+
+	@Column(name = "donGia")
+	private double price;
+
+	@Column(name = "id_lsp")
+	private int id_lsp;
+
+	public SanPham(int id, String name, double price, int id_lsp) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.id_lsp = id_lsp;
+	}
+
+	public SanPham() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getId_lsp() {
+		return id_lsp;
+	}
+
+	public void setId_lsp(int id_lsp) {
+		this.id_lsp = id_lsp;
+	}
+
+}

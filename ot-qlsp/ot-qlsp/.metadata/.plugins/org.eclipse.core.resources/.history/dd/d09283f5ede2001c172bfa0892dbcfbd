@@ -1,0 +1,15 @@
+package com.server.dao;
+
+import java.util.List;
+
+import com.server.entity.LoaiSanPham;
+
+public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO{
+
+	@Override
+	public List<LoaiSanPham> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package spring.demo.entity;
+
+public class Customer {
+
+}

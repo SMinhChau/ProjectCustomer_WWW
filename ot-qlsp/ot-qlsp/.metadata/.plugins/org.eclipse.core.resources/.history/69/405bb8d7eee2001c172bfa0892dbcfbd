@@ -1,0 +1,38 @@
+package com.server.dao;
+
+import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.server.entity.SanPham;
+
+public class SanPhamDAOImpl implements SanPhamDAO{
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Override
+	public List<SanPham> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SanPham findById(SanPham sanPham) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(SanPham sanPham) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package spring.demo.dao;
+
+public class CustomerDao {
+
+}

@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+D:\HOC TAP\HK2 (2021-2022)\WWWW\ONTHCK\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3061919569.index
+366032717.index
+1128259791.index
+4270477613.index
+1979397265.index
+2241340756.index
+2123899130.index
+1918424802.index

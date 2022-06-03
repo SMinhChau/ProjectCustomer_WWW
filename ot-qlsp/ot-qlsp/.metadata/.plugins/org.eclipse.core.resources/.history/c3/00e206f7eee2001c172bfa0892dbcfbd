@@ -1,0 +1,12 @@
+package com.server.dao;
+
+import java.util.List;
+
+import com.server.entity.SanPham;
+
+public interface SanPhamDAO {
+	public List<SanPham> getAll();
+	public SanPham findById(SanPham sanPham);
+	public void add(SanPham sanPham);
+	public void delete(int id);
+}

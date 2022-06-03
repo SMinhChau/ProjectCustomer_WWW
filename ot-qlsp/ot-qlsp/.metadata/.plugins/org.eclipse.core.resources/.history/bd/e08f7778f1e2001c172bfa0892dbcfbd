@@ -1,0 +1,37 @@
+package com.server.rest;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.server.dao.SanPhamDAO;
+import com.server.entity.SanPham;
+
+@RestController
+@RequestMapping("/api")
+public class SanPhamRestController {
+	@Autowired
+	private SanPhamDAO sanPhamDAO;
+
+	@GetMapping("/sanPhams")
+	public List<SanPham> getAll() {
+		return sanPhamDAO.getAll();
+	}
+	
+	@GetMapping("/sanPhams/{id}")
+	public SanPham findById(@PathVariable int id) {
+		SanPham sanPham = sanPhamDAO.findById(id);
+		return sanPham;
+	}
+	
+	@PostMapping("/sanPhams")
+	public SanPham add(SanPham sanPham) {
+		sanPhamDAO.add(sanPham);
+		return sanPham;
+	}
+}

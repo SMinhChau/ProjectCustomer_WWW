@@ -1,0 +1,9 @@
+package com.client.service;
+
+import java.util.List;
+
+import com.client.*;
+
+public interface LoaiSanPhamService {
+	public List<LoaiSanPham> getAll();
+}

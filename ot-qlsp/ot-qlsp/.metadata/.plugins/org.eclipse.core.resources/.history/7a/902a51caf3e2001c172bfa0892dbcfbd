@@ -1,0 +1,26 @@
+package com.client.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
+
+import com.client.entity.LoaiSanPham;
+
+public class LoaiSanPhamServiceImpl implements LoaiSanPhamService{
+
+	private RestTemplate restTemplate;
+	private String url;
+	
+	@Autowired
+	public LoaiSanPhamServiceImpl(RestTemplate template) {
+		restTemplate = template;
+		url = "http://localhost:8080/spring-mvc-qlsp-server/api/loaiSanPhams";
+	}
+	@Override
+	public List<LoaiSanPham> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

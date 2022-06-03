@@ -1,0 +1,27 @@
+package com.server.dao;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.server.entity.LoaiSanPham;
+
+public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO{
+
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Override
+	@Transactional
+	public List<LoaiSanPham> getAll() {
+		Session session = sessionFactory.getCurrentSession();
+		Query<LoaiSanPham> query = session.createQuery("from LoaiSanPham", LoaiSanPham.class);
+		return query.getResultList();
+	}
+
+}
